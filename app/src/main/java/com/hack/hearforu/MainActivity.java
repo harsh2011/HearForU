@@ -4,16 +4,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.tensorflow.lite.Interpreter;
+
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.Manifest.permission.RECORD_AUDIO;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -24,13 +39,20 @@ public class MainActivity extends AppCompatActivity {
             playbtn, stopplay;
 
 
+    private Button secondActivity;
+
     private static String mFileName = null;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        secondActivity =  (Button) findViewById(R.id.secondActivity);
 
         startbtn = (Button) findViewById(R.id.btnRecord);
         stopbtn = (Button) findViewById(R.id.btnStop);
@@ -45,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
         mFileName += "/AudioRecording.mp3";
 
         System.out.println(mFileName);
+
+
+        secondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent second = new Intent(MainActivity.this, DetectActivity.class);
+                startActivity(second);
+            }
+        });
 
         startbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,15 +159,10 @@ public class MainActivity extends AppCompatActivity {
                         Thread.sleep(100,0); // lower cpu if we wait and not just busy wait
                     } catch (InterruptedException e) { e.printStackTrace();}
                 }
-
-
-
                 raisePlayBackFinishEvent();
 
             }
         };
-
-
         r.start();
     }
 
@@ -230,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
         mediaRecorder.setOutputFile(mFileName);
         mediaRecorder.setAudioSamplingRate(1600);
     }
+
 
     private MediaRecorder mediaRecorder;
 
