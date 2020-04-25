@@ -1,6 +1,7 @@
 package com.hack.hearforu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -10,7 +11,9 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.tensorflow.lite.Interpreter;
 
@@ -32,23 +35,42 @@ public class DetectActivity extends AppCompatActivity {
     private static final String LOG_TAG = DetectActivity.class.getSimpleName();
 
 
-    private Button btnStart, btnStop;
+
+    private CardView btnStart, btnStop, gif, result;
+
+    private TextView result_txt;
+
+    //private WebView wbv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detect);
 
+        this.getSupportActionBar().hide();
+
+
         initiateModel();
         initiatelLabel();
         initiateRecongizeCommands();
 
-        btnStart = (Button) findViewById(R.id.btnStartDet);
-        btnStop = (Button) findViewById(R.id.btnStopDet);
+        btnStart = (CardView) findViewById(R.id.btnStartDet);
+        btnStop = (CardView) findViewById(R.id.btnStopDet);
+        gif = (CardView) findViewById(R.id.gif);
+        result = (CardView) findViewById(R.id.result);
+        result_txt = (TextView) findViewById(R.id.result_txt);
 
+
+        gif.setVisibility(View.GONE);
+        result.setVisibility(View.GONE);
+        btnStop.setVisibility(View.GONE);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gif.setVisibility(View.VISIBLE);
+                result.setVisibility(View.VISIBLE);
+                btnStop.setVisibility(View.VISIBLE);
+                btnStart.setVisibility(View.GONE);
                 startRecording();
                 startRecognition();
             }
@@ -57,12 +79,14 @@ public class DetectActivity extends AppCompatActivity {
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gif.setVisibility(View.GONE);
+                result.setVisibility(View.GONE);
+                btnStop.setVisibility(View.GONE);
+                btnStart.setVisibility(View.VISIBLE);
                 stopRecognition();
                 stopRecording();
             }
         });
-
-
 
     }
 
@@ -308,6 +332,15 @@ public class DetectActivity extends AppCompatActivity {
             Log.v(LOG_TAG, result.foundCommand);
             Log.v(LOG_TAG, String.valueOf(result.isNewCommand));
             Log.v(LOG_TAG, String.valueOf(result.score));
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    result_txt.setText(result.foundCommand);
+                    // Stuff that updates the UI
+
+                }
+            });
 
             try {
                 // We don't need to run too frequently, so snooze for a bit.
