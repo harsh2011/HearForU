@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "392613564235",
+    "firebase_url": "https://hearforu-28999.firebaseio.com",
+    "project_id": "hearforu-28999",
+    "storage_bucket": "hearforu-28999.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392613564235:android:cd2a6baf45c4b07d8d62ce",
+        "android_client_info": {
+          "package_name": "com.hack.hearforu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392613564235-7ctfu6kdiq6ch97rtirkip847l313b3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hack.hearforu",
+            "certificate_hash": "14964b576f9493b771999d673100d11f18be1bbe"
+          }
+        },
+        {
+          "client_id": "392613564235-asea03litg90t2qmbvq9vkqdso1hfer2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzVmXIZhlbb5pQ5kUjJ_n0fm71avltoxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392613564235-asea03litg90t2qmbvq9vkqdso1hfer2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

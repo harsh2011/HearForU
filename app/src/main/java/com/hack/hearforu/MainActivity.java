@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(CheckPermissions()) {
-                    Intent record = new Intent(MainActivity.this, UploadActivity.class);
+                    Intent record = new Intent(MainActivity.this, CollectDataActivity.class);
                     startActivity(record);
                 }
                 else{

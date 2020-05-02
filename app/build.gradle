@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -33,5 +34,14 @@ dependencies {
 
     implementation "androidx.cardview:cardview:1.0.0"
 
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-database:19.2.1'
+
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+
+    //wav recorder
+    implementation'com.github.ideastudios:IdealRecorder:2.0.4'
+
+
+
 }
