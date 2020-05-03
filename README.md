@@ -7,15 +7,15 @@ The application contains a training screen and a testing screen. The model resid
 
 ### Screenshots
 
-![image](Screenshots/device-2020-05-03-073713.png | width=48)
+![image](Screenshots/device-2020-05-03-073713.png)
 
-![image](Screenshots/device-2020-05-03-073755.png | width=48)
+![image](Screenshots/device-2020-05-03-073755.png)
 
-![image](Screenshots/device-2020-05-03-073816.png | width=48)
+![image](Screenshots/device-2020-05-03-073816.png)
 
-![image](Screenshots/device-2020-05-03-073836.png | width=48)
+![image](Screenshots/device-2020-05-03-073836.png)
 
-![image](Screenshots/device-2020-05-03-073930.png | width=48)
+![image](Screenshots/device-2020-05-03-073930.png)
 
 ### Recording Layout
 The app is tailored to collect data if user wants. No login needed for testing and providing training data.
