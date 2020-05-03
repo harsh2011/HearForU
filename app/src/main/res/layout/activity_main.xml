@@ -14,6 +14,19 @@
         android:gravity="center">
 
 
+        <TextView
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Info"
+            android:textSize="22dp" />
+        <TextView
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Application aim at creating a dataset composed of voice samples from healthy individuals, and those with COVID-19 infection. The data is collected using this application. Voice samples collected is cough sounds (deep and shallow). Metadata information collected includes the participant's fever, age, and other thing. \nApplication requests for recording the voice samples, and preferably provides results of COVID-19 infection."
+
+            />
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/detectActivity"
             android:layout_width="320dp"
@@ -26,7 +39,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="DETECT"
+                android:text="COUGHING TEST"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -49,7 +62,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="UPLOAD"
+                android:text="UPLOAD SAMPLE"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold"

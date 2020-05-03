@@ -90,8 +90,8 @@ public class DetectActivity extends AppCompatActivity {
 
     }
 
-    private static final String LABEL_FILENAME = "file:///android_asset/conv_actions_labels.txt";
-    private static final String MODEL_FILENAME = "file:///android_asset/conv_actions_frozen.tflite";
+    private static final String LABEL_FILENAME = "file:///android_asset/model_label.txt";
+    private static final String MODEL_FILENAME = "file:///android_asset/model_1.tflite";
     private Interpreter tfLite;
     private List<String> labels = new ArrayList<String>();
     private List<String> displayedLabels = new ArrayList<>();
@@ -138,7 +138,7 @@ public class DetectActivity extends AppCompatActivity {
         }
 
         tfLite.resizeInput(0, new int[] {RECORDING_LENGTH, 1});
-        tfLite.resizeInput(1, new int[] {1});
+        //tfLite.resizeInput(1, new int[] {1});
 
 
     }
@@ -315,7 +315,8 @@ public class DetectActivity extends AppCompatActivity {
                 floatInputBuffer[i][0] = inputBuffer[i] / 32767.0f;
             }
 
-            Object[] inputArray = {floatInputBuffer, sampleRateList};
+            //Object[] inputArray = {floatInputBuffer, sampleRateList};
+            Object[] inputArray = {floatInputBuffer};
             Map<Integer, Object> outputMap = new HashMap<>();
             outputMap.put(0, outputScores);
 
